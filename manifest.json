@@ -1,6 +1,6 @@
 {
-    "name": "mytuto1",
-    "short_name": "mytuto1",
+    "name": "gtk_flutter",
+    "short_name": "gtk_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
