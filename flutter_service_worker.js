@@ -3,33 +3,42 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "80d100b3844f0f16c79560be775543b5",
-"assets/assets/friendlyeater.png": "091148f3e7a48ee1eda4217adc8aaa74",
-"assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
-"assets/fonts/MaterialIcons-Regular.otf": "7e7a6cccddf6d7b20012a548461d5d81",
-"assets/NOTICES": "5825ae15751e913a2a27182cd87ead69",
-"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
-"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
-"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
-"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
-"favicon.png": "5dcef449791fa27946b3d35ad8803796",
+  "assets/AssetManifest.json": "7186f6820b8cb3f9bc24d65df8e8300d",
+"assets/assets/audios/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/assets/fonts/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/assets/fonts/Poppins-SemiBold.ttf": "6f1520d107205975713ba09df778f93f",
+"assets/assets/images/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/assets/lottie_animations/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/assets/pdfs/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/assets/rive_animations/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/assets/videos/favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"assets/FontManifest.json": "5a32d4310a6f5d9a6b651e75ba0d7372",
+"assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
+"assets/NOTICES": "bc48ad7c8b0a62bf4ed2f995370380e6",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "d1722d5cf2c7855862f68edb85e31f88",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "613e4cc1af0eb5148b8ce409ad35446d",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "dd3c4233029270506ecc994d67785a37",
+"canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
+"canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
+"canvaskit/profiling/canvaskit.js": "c21852696bc1cc82e8894d851c01921a",
+"canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
+"favicon.png": "2704101cb06ce66e2000356a312be25c",
+"flutter.js": "a85fcf6324d3c4d3ae3be1ae4931e9c5",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "0307977a685024217c0d29c960fe2d36",
-"/": "0307977a685024217c0d29c960fe2d36",
-"main.dart.js": "c82f2ecaab7a831630df7fdfe1c30d05",
-"main.dart.js_1.part.js": "4db284aaaa057d5b95daec719cbd6597",
-"manifest.json": "c2b224db8c7e90124444ec0436935b61",
-"version.json": "f244ab141b78c00842cbb8272de1d5ed"
+"index.html": "20029d4f13974bd3a91d7c822821f25a",
+"/": "20029d4f13974bd3a91d7c822821f25a",
+"main.dart.js": "80c20136f8ec4ac5b6f23292b6bd5be7",
+"manifest.json": "375aef7b50d4654954a7817a6fc5aaa3",
+"version.json": "bca6bf60117354cc7445c73d791ce187"
 };
 
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "/",
-"main.dart.js",
+  "main.dart.js",
 "index.html",
-"assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
@@ -128,9 +137,11 @@ self.addEventListener("fetch", (event) => {
     .then((cache) =>  {
       return cache.match(event.request).then((response) => {
         // Either respond with the cached resource, or perform a fetch and
-        // lazily populate the cache.
+        // lazily populate the cache only if the resource was successfully fetched.
         return response || fetch(event.request).then((response) => {
-          cache.put(event.request, response.clone());
+          if (response && Boolean(response.ok)) {
+            cache.put(event.request, response.clone());
+          }
           return response;
         });
       })
