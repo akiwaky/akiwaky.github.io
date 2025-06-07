@@ -1,0 +1,9 @@
+---
+const { imageUrl, title, description } = Astro.props;
+// Componente de tarjeta reutilizable
+---
+<article style="border:1px solid #ddd; padding:1rem; border-radius:8px; max-width:300px;">
+  {imageUrl && <img src={imageUrl} alt={title} style="width:100%; border-radius:4px;" />}
+  <h3>{title}</h3>
+  <p>{description}</p>
+</article>
