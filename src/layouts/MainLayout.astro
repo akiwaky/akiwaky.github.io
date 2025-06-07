@@ -1,0 +1,40 @@
+---
+const year = new Date().getFullYear();
+// Layout principal con header, contenido y footer compartido
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><slot name="title">Mi Portafolio</slot></title>
+  </head>
+  <body>
+    <header style="display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; border-bottom:1px solid #ddd;">
+      <div class="logo">
+        <!-- Espacio para el logo -->
+        <slot name="logo" />
+      </div>
+      <nav>
+        <ul style="display:flex; gap:1rem; list-style:none; margin:0; padding:0;">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/portafolio">Portafolio</a></li>
+          <li><a href="/proyectos">Proyectos</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/sobre-mi">Sobre Mí</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main style="padding:2rem;">
+      <slot />
+    </main>
+    <footer style="text-align:center; padding:1rem 0; border-top:1px solid #ddd;">
+      <p>&copy; <span id="year">{year}</span> Mi Portafolio</p>
+      <div class="social">
+        <!-- Enlaces a iconos de redes sociales -->
+        <slot name="social" />
+      </div>
+    </footer>
+  </body>
+</html>
