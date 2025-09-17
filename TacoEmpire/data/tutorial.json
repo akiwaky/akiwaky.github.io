@@ -1,0 +1,29 @@
+{
+  "steps": [
+    {
+      "id": "welcome",
+      "title": "Bienvenidx a Taco Empire",
+      "body": "Arrastra un comal al terreno para arrancar el changarro." 
+    },
+    {
+      "id": "buy_corn",
+      "title": "Compra maíz",
+      "body": "Abre la pestaña de inventario y compra 10 unidades de maíz." 
+    },
+    {
+      "id": "cook_tortillas",
+      "title": "Saca la tanda",
+      "body": "Observa el comal producir tortillas recién hechas." 
+    },
+    {
+      "id": "prep_tacos",
+      "title": "Arma tacos",
+      "body": "Coloca la mesa de prep y conecta el flujo a la venta." 
+    },
+    {
+      "id": "sell_customers",
+      "title": "Vende como campeonx",
+      "body": "Abre el mostrador y atiende a la hora pico." 
+    }
+  ]
+}

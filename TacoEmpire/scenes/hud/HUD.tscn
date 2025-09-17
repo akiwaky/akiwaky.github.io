@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_xlmlf"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xlmlf")
+
+[node name="Root" type="MarginContainer" parent="."]
+anchors_preset = 0
+anchor_right = 0.3
+anchor_bottom = 0.35
+offset_left = 20
+offset_top = 20
+offset_right = 20
+offset_bottom = 20
+custom_constants/margin_left = 12
+custom_constants/margin_top = 12
+custom_constants/margin_right = 12
+custom_constants/margin_bottom = 12
+
+[node name="Background" type="Panel" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+self_modulate = Color(1, 1, 1, 0.84)
+
+[node name="Content" type="VBoxContainer" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 8
+
+[node name="Header" type="Label" parent="Root/Content"]
+text = "Taco Empire Dashboard"
+add_theme_color_override("font_color", Color(0.8, 0.2, 0.2))
+
+[node name="Metrics" type="GridContainer" parent="Root/Content"]
+columns = 2
+custom_constants/h_separation = 8
+custom_constants/v_separation = 2
+
+[node name="CashLabel" type="Label" parent="Root/Content/Metrics"]
+text = "Cash"
+
+[node name="CashValue" type="Label" parent="Root/Content/Metrics"]
+text = "$0"
+
+[node name="TimeLabel" type="Label" parent="Root/Content/Metrics"]
+text = "Hora"
+
+[node name="TimeValue" type="Label" parent="Root/Content/Metrics"]
+text = "00:00"
+
+[node name="DemandLabel" type="Label" parent="Root/Content/Metrics"]
+text = "Afluencia"
+
+[node name="DemandValue" type="Label" parent="Root/Content/Metrics"]
+text = "0 pax/min"
+
+[node name="Inventory" type="VBoxContainer" parent="Root/Content"]
+custom_constants/separation = 4
+
+[node name="InventoryTitle" type="Label" parent="Root/Content/Inventory"]
+text = "Inventario"
+
+[node name="Values" type="VBoxContainer" parent="Root/Content/Inventory"]
+custom_constants/separation = 2
+
+[node name="PaletteLabel" type="Label" parent="Root/Content"]
+text = "Módulos disponibles"
+
+[node name="Palette" type="HBoxContainer" parent="Root/Content"]
+custom_constants/separation = 6
+
+[node name="Actions" type="HBoxContainer" parent="Root/Content"]
+custom_constants/separation = 8
+
+[node name="BuyCornButton" type="Button" parent="Root/Content/Actions"]
+text = "Comprar maíz x10 🌽"
+
+[node name="SaveButton" type="Button" parent="Root/Content/Actions"]
+text = "Guardar 💾"
+
+[node name="UpgradesButton" type="Button" parent="Root/Content/Actions"]
+text = "Mejoras 🌮"
+
+[node name="EventBanner" type="Panel" parent="."]
+anchors_preset = 2
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_top = 0.02
+anchor_bottom = 0.12
+self_modulate = Color(0.4, 0.6, 0.8, 0.85)
+visible = false
+
+[node name="EventLabel" type="Label" parent="EventBanner"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Evento"
+

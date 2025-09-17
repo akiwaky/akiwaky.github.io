@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/MainController.gd" id="1_2whp2"]
+[ext_resource type="Script" path="res://scripts/systems/PlacementSystem.gd" id="2_0g9t2"]
+[ext_resource type="Script" path="res://scripts/systems/Production.gd" id="3_0kqmx"]
+[ext_resource type="PackedScene" path="res://scenes/hud/HUD.tscn" id="4_he6rh"]
+[ext_resource type="PackedScene" path="res://scenes/ui/UpgradesPanel.tscn" id="5_p3h3g"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial/Tutorial.tscn" id="6_k99vh"]
+[ext_resource type="Script" path="res://scripts/world/PlacementGhost.gd" id="7_1d42u"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_2whp2")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground" type="ColorRect" parent="World"]
+position = Vector2(-512, -256)
+size = Vector2(1024, 512)
+color = Color(0.97, 0.9, 0.7, 1)
+
+[node name="PlacementSystem" type="Node2D" parent="World"]
+script = ExtResource("2_0g9t2")
+position = Vector2(0, 0)
+
+[node name="Production" type="Node" parent="World"]
+script = ExtResource("3_0kqmx")
+
+[node name="Ghost" type="Node2D" parent="World"]
+script = ExtResource("7_1d42u")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Ghost"]
+polygon = PackedVector2Array(0, -16, 32, 0, 0, 16, -32, 0)
+color = Color(0.3, 0.9, 0.3, 0.5)
+
+[node name="HUD" parent="." instance=ExtResource("4_he6rh")]
+
+[node name="UpgradesPanel" parent="." instance=ExtResource("5_p3h3g")]
+
+[node name="Tutorial" parent="." instance=ExtResource("6_k99vh")]
