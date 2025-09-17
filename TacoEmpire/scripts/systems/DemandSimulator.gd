@@ -57,7 +57,9 @@ func _find_segment(hour_of_day: float) -> Dictionary:
         var end := int(segment.get("end_hour", 24))
         if hour_of_day >= start and hour_of_day <= end:
             return segment
-    return _segments.is_empty() ? {} : _segments[0]
+    if _segments.is_empty():
+        return {}
+    return _segments[0]
 
 func _maybe_trigger_drizzle() -> void:
     if _drizzle_config.is_empty():

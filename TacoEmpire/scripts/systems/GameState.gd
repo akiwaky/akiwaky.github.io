@@ -38,7 +38,13 @@ func _ready() -> void:
     SaveLoad.register_provider(self)
     set_process(true)
 
-func register_scene(placement: PlacementSystem, production_node: Production, hud_node: Node, upgrades_node: Node, tutorial_node: Node) -> void:
+func register_scene(
+        placement: PlacementSystem,
+        production_node: Production,
+        hud_node: Node,
+        upgrades_node: Node,
+        tutorial_node: Node
+    ) -> void:
     placement_system = placement
     production = production_node
     hud = hud_node
@@ -104,7 +110,9 @@ func _load_json(file_name: String) -> Dictionary:
     var content := file.get_as_text()
     file.close()
     var parsed := JSON.parse_string(content)
-    return typeof(parsed) == TYPE_DICTIONARY ? parsed : {}
+    if typeof(parsed) == TYPE_DICTIONARY:
+        return parsed
+    return {}
 
 func _start_or_load() -> void:
     var saved := SaveLoad.load_game()
