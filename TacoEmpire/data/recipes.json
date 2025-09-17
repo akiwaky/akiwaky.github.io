@@ -1,0 +1,44 @@
+{
+  "resources": [
+    {
+      "id": "corn",
+      "name": "Maíz",
+      "unit_cost": 2,
+      "stack_limit": 200
+    },
+    {
+      "id": "tortilla",
+      "name": "Tortilla",
+      "unit_cost": 0,
+      "stack_limit": 200
+    },
+    {
+      "id": "taco_basic",
+      "name": "Taco Clásico",
+      "unit_cost": 0,
+      "stack_limit": 200
+    }
+  ],
+  "recipes": [
+    {
+      "id": "tortilla_from_corn",
+      "input": [
+        { "resource": "corn", "amount": 1 }
+      ],
+      "output": [
+        { "resource": "tortilla", "amount": 1 }
+      ],
+      "duration_seconds": 2.0
+    },
+    {
+      "id": "taco_from_tortilla",
+      "input": [
+        { "resource": "tortilla", "amount": 1 }
+      ],
+      "output": [
+        { "resource": "taco_basic", "amount": 1 }
+      ],
+      "duration_seconds": 1.5
+    }
+  ]
+}
